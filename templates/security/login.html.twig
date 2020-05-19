@@ -1,42 +1,104 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="es">
 
-{% block title %}Log in!{% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Document</title>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />  
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-1 fila-1 justify-content-end">
+            <div class="col-7">
+                <div class="row">
+                    <img class="img-fluid fila-1-img" id="i-volver" src="{{ asset('imagenes/ICONS/go-back.svg') }}" alt="volver" />
+                    <label class="mt-2" for="i-volver">Volver</label>
+                </div>
+            </div>
 
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+            <div class="col-5 fila1-2">
+                <div class="row justify-content-end">
+                    <label for="user-nuevo" class="mt-2"><u>Nueva Cuenta</u></label>
+                    <img id="user-nuevo" class="img-fluid fila-1-img" src="{{ asset('imagenes/ICONS/User-plus.svg') }}" alt="user" />
+                </div>
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+            <div class="col-12 fila1-3 mt-5">
+                <div class="row justify-content-center align-items-center">
+                    <img class="img-fluid" src="{{ asset('imagenes/IMAGES/Nutritienda-simple_logo.svg') }}" alt="Nutritienda">
+                </div>
+            </div>
+            <div class="col-12 fila1-3 mt-5">
+                <div class="row justify-content-center align-items-center">
+                    <h3>Login</h3>
+                </div>
+            </div>
+            <div class="col-12 fila1-3 ">
+                <div class="row justify-content-center align-items-center">
+                    <span class="text-fila1-3">¡Accede a tu cuenta para disfrutar de tus ventajas!</span>
+                </div>
+            </div>
         </div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+        <div class="row fila2 mt-3">
+            <hr /><label class="text-fila-2 pt-2">ACCESO RÁPIDO CON REDES SOCIALES</label>
+            <hr />
         </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-{% endblock %}
+        <div class="row fila3 justify-content-center mt-3">
+            <img class="" src="{{ asset('imagenes/IMAGES/connect-Facebook-42px.svg') }}" alt="Facebook">
+            <img class="ml-4 mr-4" src="{{ asset('imagenes/IMAGES/connect-Google-42px.svg') }}" alt="Google">
+            <img class="" src="{{ asset('imagenes/IMAGES/connect-Twitter-42px.svg') }}" alt="Twitter">
+        </div>
+        <div class="row fila3 mt-3">
+            <hr /><label class="text-fila-2 pt-2">ACCESO CON EMAIL Y CONTRASEÑA</label>
+            <hr />
+        </div>
+        <div class="row fila4 mt-3">
+            <form action="" method="post" class="col-12">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="form-group col-12">
+                    <label class="l-input-text" for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" class="form-control" id="inputEmail" required autofocus>
+                </div>
+                <div class="form-group col-12">
+                    <label class="l-input-text" for="inputPassword">Contraseña</label>
+                    <div class="input-group">
+                        <input ID="txtPassword" name="password" type="Password" Class="form-control" required>
+                        <div class="input-group-append">
+                            <img id="img-password" class="btn-password img-fluid" src="{{ asset('imagenes/ICONS/hide.svg') }}" alt="show"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check mt-3">
+                    <label class="custom-radio-checkbox mr-3">
+                        <!-- Input oculto -->
+                        <input class="custom-radio-checkbox__input" type="checkbox" name="recuerdame" value="">
+                        <!-- Imagen en sustitucion -->
+                        <span class="custom-radio-checkbox__show custom-radio-checkbox__show--checkbox"></span>
+                        <!-- Texto -->
+                        <span class="l-check custom-radio-checkbox__text">Recuérdame</span>
+                    </label>
+                    <a class="enlace ml-4" href="">¿Has olvidado tu contraseña?</a>
+                </div>
+                <div class="col-12 mb-3 mt-2">
+                    <button class="btn-pink btn " type="submit">Iniciar sesión</button>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </form>
+        </div>
+    </div>
+<script src="{{ asset('js/login.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / Social / Facebook</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-/-Social-/-Facebook" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <g id="Group-2">
+                <polygon id="Shape" points="0 0 32 0 32 32 0 32"></polygon>
+                <path d="M18.0625,29.3125 L13.125,29.3125 L13.125,17.1875 L9,17.1875 L9,12.4375 L13.125,12.4375 L13.125,8.9375 C13.125,6.93749 13.6874944,5.39583875 14.8125,4.3125 C15.9375056,3.22916125 17.4374906,2.6875 19.3125,2.6875 C20.8125075,2.6875 22.0416619,2.74999937 23,2.875 L23,7.0625 L20.4375,7.125 C19.5208287,7.125 18.895835,7.31249813 18.5625,7.6875 C18.229165,8.06250188 18.0625,8.62499625 18.0625,9.375 L18.0625,12.4375 L22.8125,12.4375 L22.1875,17.1875 L18.0625,17.1875 L18.0625,29.3125 Z" id="facebook" fill="#FA2398"></path>
+            </g>
+        </g>
+    </g>
+</svg>
