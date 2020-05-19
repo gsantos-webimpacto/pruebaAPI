@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / Star-filled</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-/-Star-filled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+            <path d="M16,22.14 L9,27.39 C8.21570389,27.9782221 7.14129645,27.203833 7.4513167,26.2737722 L10.2675808,17.82498 L3.98605939,12.9393522 C3.23447356,12.3547855 3.64784478,11.15 4.6,11.15 L12.2490612,11.15 L15.0555032,3.08147938 C15.3669139,2.18617354 16.6330861,2.18617354 16.9444968,3.08147938 L19.7509388,11.15 L27.4,11.15 C28.3521552,11.15 28.7655264,12.3547855 28.0139406,12.9393522 L21.7324192,17.82498 L24.5486833,26.2737722 C24.8587036,27.203833 23.7842961,27.9782221 23,27.39 L16,22.14 Z" id="Path" fill="#FA2398"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,134 @@
+/* div{
+    border:1px solid black;
+} */
+@font-face{
+    font-family: Nexa-XBold;
+    src: url("../Fonts/Nexa/Nexa_V1_2012/Nexa\ Bold.otf");
+}
+@font-face{
+    font-family: Nexa-Bold;
+    src: url("../Fonts/Nexa/Nexa_V1_2012/Nexa\ Light.otf");
+}
+@font-face{
+    font-family: Lato-Regular;
+    src: url("../Fonts/Lato-Regular.ttf");
+}
+.fila-1{
+    background-image: url("../imagenes/IMAGES/Light-Cover-Pattern-bg@2x.png");
+    background-size: 70%;
+    /* font-size: 14px;
+    /* font-weight: bolder; */
+    /* font-family: Nexa-XBold;  */
+    /* padding-top: ; */
+    font-family: Nexa-XBold;
+    font-size: 14px;
+    color: #3B3B3B;
+    text-align: center;
+    line-height: 14px;
+}
+.fila-1-img{
+    width: 10%;
+}
+.fila1-2{
+    /* padding-right: 4px; */
+    margin-left: 0%;
+}
+span{
+    font-family: Lato-Regular;
+    font-size: 14px;
+    color: #84868A;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 20px;
+}
+.text-fila-2{
+    /* font-size: 0.8em; */
+    font-family: Nexa-Bold;
+    font-size: 12px;
+    color: #3B3B3B;
+    text-align: center;
+    /* line-height: 12px; */
+}
+hr{
+    width: 10%;
+    color: black;
+}
+.fila4{
+    font-size: 0.7em;
+}
+#txtPassword{
+    z-index: 1;
+}
+#img-password{
+    position: absolute;
+    margin-left: -13%;
+    margin-top: 3%;
+    z-index: 2;
+    height: 65%;
+    opacity: 0.3;
+}
+.enlace{
+    font-family: Lato-Regular;
+    font-size: 14px;
+    color: #FA2398;
+    letter-spacing: 0;
+    text-align: right;
+    line-height: 20px;
+    
+}
+.btn-pink{
+    background-color: #FA2398;
+    color: white;
+    width: 100%;
+}
+.l-check{
+    font-family: Lato-Regular;
+    font-size: 14px;
+    color: #3B3B3B;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+.l-input-text{
+    font-family: Lato-Regular;
+font-size: 13px;
+color: #3B3B3B;
+letter-spacing: 0;
+line-height: 13px;
+}
+/* Centra el input personalizado con el texto */
+.custom-radio-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    /* font-family: arial; */
+    /* color: blue; */
+    
+}
+
+/* Modificador para dar la imagen de checkbox */
+.custom-radio-checkbox__show--checkbox {
+    /* background-image: url(checkbox-uncheck.png); */
+    box-shadow: 0 0 0 1px black;
+
+}
+
+/* Oculta input original */
+.custom-radio-checkbox > .custom-radio-checkbox__input {
+    display: none;
+}
+
+/* Radio personalizado usando <span> */
+.custom-radio-checkbox > .custom-radio-checkbox__show {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: .5rem;
+    background-size: cover;
+}
+
+/* Cambia el checkbox personalizado cuando es pulsado */
+.custom-radio-checkbox > .custom-radio-checkbox__input:checked + .custom-radio-checkbox__show--checkbox {
+    /* background-image: url(Icons/\ check_for_checkbox.svg); */
+    background-image: url('../imagenes/Icons/check_for_checkbox.svg');
+
+}
