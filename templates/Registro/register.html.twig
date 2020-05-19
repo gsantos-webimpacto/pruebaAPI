@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/register/registrarusuario" method="post">
+            {# <div class="row">
+                <label class="col-9 mt-4" for="i-id">ID</label>
+                <input type="text" name="id" id="i-id" class="form-control col-4"
+                    placeholder="M-02-T-150-0000000009X" />
+            </div> #}
+            <div class="row mt-4 mb-4">
+                <div class="col-6 mr-3 row">
+                    <label class="col-8 mt-4" for="i-nombre">*Nombre</label>
+                    <input type="text" name="nombre" id="i-nombre" class="form-control col-8" placeholder="Nombre"
+                        required />
+
+                    <label class="col-8 mt-4" for="i-apellidos">*Apellidos</label>
+                    <input type="text" name="apellidos" id="i-apellidos" class="form-control col-8"
+                        placeholder="Apellidos" required />
+
+                    <label class="col-8 mt-4" for="i-email">*Correo electrónico</label>
+                    <div class="input-group is-invalid">
+                        <input type="text" name="email" id="i-email" class="form-control col-8"
+                            placeholder="example@correo.com" required />
+                        <div class="input-group-append">
+                            <button id="btn-password" class="btn btn-outline-secondary" type="button">
+                                Cambiar
+                            </button>
+                        </div>
+                    </div>
+
+                    <label class="col-8 mt-4" for="i-password">*Contraseña</label>
+                    <div class="input-group is-invalid">
+                        <input type="password" name="password" id="i-password" class="form-control col-8" required />
+                        <div class="input-group-append">
+                            <button id="btn-cambiarPassword" class="btn btn-outline-secondary" type="button">
+                                Cambiar Contraseña
+                            </button>
+                        </div>
+                    </div>
+
+                    <label class="col-8 mt-4" for="i-fNacimiento">*Fecha de nacimiento</label>
+                    <div class="input-group is-invalid">
+                        <input type="date" name="fechaNacimiento" id="i-fNacimiento" class="form-control col-8"
+                            required />
+                        <div class="input-group-append">
+                            <button id="btn-cambiarPassword" class="btn btn-outline-secondary" type="button">
+                                <img src="" alt="Calendario" />
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-check form-check-inline col-4 mt-4">
+                        <input class="form-check-input fa-2x" type="radio" name="sexo" id="i-hombre" value="Hombre"
+                            required />
+                        <label class="form-check-label" for="i-hombre">Hombre</label>
+                    </div>
+                    <div class="form-check form-check-inline col-4 mt-4">
+                        <input class="form-check-input fa-2x" type="radio" name="sexo" id="i-mujer" value="Mujer"
+                            required />
+                        <label class="form-check-label" for="i-mujer">Mujer</label>
+                    </div>
+
+                    <label class="col-8 mt-4" for="i-telefono">Teléfono</label>
+                    <input type="text" name="telefono" id="i-telefono" class="form-control col-8" />
+
+                    <label class="col-8 mt-4" for="i-idioma">*Idioma</label>
+                    <div class="input-group is-invalid">
+                        <select id="i-idioma" class="form-control col-8" name="idioma" required>
+                            {% for idioma in listadoidioma %}
+                            <option  value='{{idioma.ididioma}}' {% if idioma.ididioma==1 %}selected{% endif %}> {{ idioma.descripcion }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-5 row ml-2 pb-5 mb-5">
+                    <label for="i-datosAdicionales" class="col-8 mt-4">Datos Adicionales</label>
+                    <textarea class="form-control col-12" id="datosAdicionales" name="datosAdicionales"
+                        style="resize: none;"></textarea>
+
+                    <label class="col-8 mt-4" for="i-pais">*País</label>
+                    <div class="input-group is-invalid">
+                        <select id="i-pais" class="form-control col-8" name="pais" required>
+                            {% for pais in listadopaises %}
+                            <option  value='{{pais.idpais}}' {% if pais.idpais==1 %}selected{% endif %}> {{ pais.nombre }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="col-8 mt-4" for="i-provincia">*Provincia</label>
+                    <div class="input-group is-invalid">
+                        <select id="i-provincia" class="form-control col-8" name="provincia" required>
+                            {% for provincia in listadoprovincia %}
+                            <option class="o-provincia" value='{{provincia.idprovincia}}' {% if provincia.idprovincia==1 %}selected{% endif %}> {{ provincia.nombre }} </option>
+                            {% endfor %} 
+                        </select>
+                    </div>
+
+                    <label class="col-8 mt-4" for="i-ciudad">Ciudad</label>
+                    <input type="text" name="ciudad" id="i-ciudad" class="form-control col-8" />
+
+                    <label class="col-8 mt-4" for="i-direccion">Dirección</label>
+                    <input type="text" name="direccion" id="i-direccion" class="form-control col-12" />
+
+                    <label class="col-8 mt-4" for="i-codigoPostal">CódigoPostal</label>
+                    <input type="number" name="codigoPostal" id="i-codigoPostal" class="form-control col-8" />
+                    
+                    <button class="btn-primary btn mt-4 col-5" type="submit">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        var pais=document.getElementById('i-pais');
+        pais.addEventListener("change",function(){
+            var idPais=pais.value;
+            var $provincias=$('.o-provincia');
+            if($provincias.length>0){
+                for (var i=0;i<$provincias.length;i++){
+                    var result = $provincias[i];
+                    result.remove();
+                }
+            }         
+            $.ajax({  
+               url:        '/findProvinciasByPais/'+idPais.toString(),  
+               type:       'POST',   
+               dataType:   'json', 
+               async:      true,  
+               success: function(data, status) { 
+                   var e = $('<option class="o-provincia" id="op-'+0+'" value='+data[0]['idprovincia']+' selected>'+data[0]['nombre']+'</option>');
+                    $("#i-provincia").prepend(e);
+                  for(i = 1; i < data.length; i++) {  
+                     student = data[i];  
+                     var e = $('<option class="o-provincia" id="op-'+i+'" value='+student['idprovincia']+'>'+student['nombre']+'</option>');
+                     $("#i-provincia").prepend(e);
+                  }  
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log('Ajax failed.');
+               }  
+            });  
+       });
+    </script>
+</body>
+
+</html>
