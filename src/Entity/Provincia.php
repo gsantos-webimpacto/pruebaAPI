@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * Provincia
- *
+ * @ApiResource
  * @ORM\Table(name="provincia", indexes={@ORM\Index(name="fk_provincia_pais", columns={"pais"})})
  * @ORM\Entity
  */
