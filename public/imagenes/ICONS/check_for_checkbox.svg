@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / check_for_checkbox</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-/-check_for_checkbox" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+            <path d="M13.1666667,19.2977994 L8.26776695,14.3988997 C7.29145622,13.422589 5.70854378,13.422589 4.73223305,14.3988997 C3.75592232,15.3752104 3.75592232,16.9581229 4.73223305,17.9344336 L11.3988997,24.6011003 C12.3752104,25.577411 13.9581229,25.577411 14.9344336,24.6011003 L28.267767,11.267767 C29.2440777,10.2914562 29.2440777,8.70854378 28.267767,7.73223305 C27.2914562,6.75592232 25.7085438,6.75592232 24.732233,7.73223305 L13.1666667,19.2977994 Z" id="Path" fill="#FA2398"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / arrow-right</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-/-arrow-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+        <path d="M18.9257864,16 L13.1728932,21.7528932 C12.7823689,22.1434175 12.7823689,22.7765825 13.1728932,23.1671068 C13.5634175,23.5576311 14.1965825,23.5576311 14.5871068,23.1671068 L21.0471068,16.7071068 C21.4376311,16.3165825 21.4376311,15.6834175 21.0471068,15.2928932 L14.5871068,8.83289322 C14.1965825,8.44236893 13.5634175,8.44236893 13.1728932,8.83289322 C12.7823689,9.22341751 12.7823689,9.85658249 13.1728932,10.2471068 L18.9257864,16 Z" id="Path" fill="#FA2398"></path>
+    </g>
+</svg>

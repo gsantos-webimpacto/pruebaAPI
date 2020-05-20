@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / push-down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons-/-push-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+        <g id="arrows_square_down" transform="translate(5.000000, 12.000000)" fill="#FA2398">
+            <path d="M1.51464688,0.142658202 C1.04106662,-0.141489957 0.426806362,0.0120751067 0.142658202,0.485655373 C-0.141489957,0.959235639 0.0120751067,1.57349589 0.485655373,1.85764405 L10.4856554,7.85764405 C10.8023378,8.04765349 11.1979645,8.04765349 11.5146469,7.85764405 L21.5146469,1.85764405 C21.9882271,1.57349589 22.1417922,0.959235639 21.8576441,0.485655373 C21.5734959,0.0120751067 20.9592356,-0.141489957 20.4856554,0.142658202 L11.0001511,5.83396075 L1.51464688,0.142658202 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

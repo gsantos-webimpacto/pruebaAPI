@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>connect-Facebook-42px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="connect-Facebook-42px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <circle id="Oval" fill="#1877F2" fill-rule="nonzero" cx="21" cy="21" r="21"></circle>
+            <g id="Icons-/-Social-/-Facebook" transform="translate(9.000000, 9.000000)">
+                <g id="Group">
+                    <g id="Group-2">
+                        <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                        <path d="M13.546875,21.984375 L9.84375,21.984375 L9.84375,12.890625 L6.75,12.890625 L6.75,9.328125 L9.84375,9.328125 L9.84375,6.703125 C9.84375,5.2031175 10.2656208,4.04687906 11.109375,3.234375 C11.9531292,2.42187094 13.078118,2.015625 14.484375,2.015625 C15.6093806,2.015625 16.5312464,2.06249953 17.25,2.15625 L17.25,5.296875 L15.328125,5.34375 C14.6406216,5.34375 14.1718763,5.48437359 13.921875,5.765625 C13.6718737,6.04687641 13.546875,6.46874719 13.546875,7.03125 L13.546875,9.328125 L17.109375,9.328125 L16.640625,12.890625 L13.546875,12.890625 L13.546875,21.984375 Z" id="facebook" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
