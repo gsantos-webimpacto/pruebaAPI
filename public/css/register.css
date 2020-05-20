@@ -1,6 +1,3 @@
-/* div{
-    border:1px solid black;
-} */
 body{
     background-color: #FA2398;
 }
@@ -8,10 +5,17 @@ body{
     max-width: 700px;
     background-color: white;
     border-radius: 5px;
+    
 }
+
+@font-face {font-family: "NexaHeavy"; src: url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.eot"); src: url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.woff") format("woff"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.svg#NexaW01-Heavy") format("svg"); }
 @font-face{
     font-family: Nexa-XBold;
     src: url("../Fonts/Nexa/Nexa_V1_2012/Nexa\ Bold.otf");
+}
+@font-face{
+    font-family: Nexa-XBold;
+    src: url("../Fonts/Nexa/Nexa_V2_2020/OTF");
 }
 @font-face{
     font-family: Nexa-Bold;
@@ -39,7 +43,7 @@ body{
     color: #3B3B3B;
 }
 .fila-1-img{
-    /* width: 10%; */
+    width: 10%;
 }
 .fila1-2{
     /* padding-right: 4px; */
@@ -68,10 +72,10 @@ hr{
 .fila4{
     font-size: 0.7em;
 }
-#txtPassword{
+#txtPassword, #txtRepetir{
     z-index: 1;
 }
-#img-password{
+#img-password, #img-repetir{
     position: absolute;
     margin-left: -13%;
     margin-top: 3%;
@@ -143,4 +147,26 @@ line-height: 13px;
     /* background-image: url(Icons/\ check_for_checkbox.svg); */
     background-image: url('../imagenes/Icons/check_for_checkbox.svg');
 
+}
+.check-text-info{
+    font-family: Lato-Regular;
+    font-size: 12px;
+    color: #84868A;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+.l-radio-text{
+    font-family: Lato-Bold;
+    font-size: 15px;
+    color: #3B3B3B;
+    letter-spacing: 0;
+    line-height: 42px;
+}
+.servicios{
+    font-family: NexaHeavy;
+    font-size: 11px;
+    color: #3B3B3B;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 16px;
 }
