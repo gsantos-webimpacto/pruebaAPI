@@ -1,4 +1,30 @@
 (function () {
+    function mostrarFechaNacimiento(){
+        var $date=new Date($('#i-fNacimiento').val());
+        // $('').remove();
+        var option = "<option value='"+$date.getFullYear()+"' selected>"+$date.getFullYear()+"</option>";
+        $("select[name=ano]").append(option);
+        var meses = [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre",
+        ];
+        var option = "<option value='"+$date.getMonth()+"' selected>"+meses[$date.getMonth()]+"</option>";
+        $("select[name=mes]").append(option);
+        // $("select[name=dia]").find("option").remove();
+        var option = "<option value='"+$date.getDate()+"' selected>"+$date.getDate()+"</option>";
+        $("select[name=dia]").append(option);
+    }
+    mostrarFechaNacimiento();
     function mostrarPassword() {
         var cambio = document.getElementById("txtPassword");
         if (cambio.type == "password") {
@@ -40,10 +66,10 @@
     var year = date.getFullYear();
     $("#year").on("change", function () {
         $('.mes').remove();
-        var option="<option value='' disabled selected>Mes</option>";
+        var option = "<option value='' disabled selected>Mes</option>";
         $("select[name=mes]").append(option);
         $("select[name=dia]").find("option").remove();
-        option="<option value='' disabled selected>Día</option>";
+        option = "<option value='' disabled selected>Día</option>";
         $("select[name=dia]").append(option);
     });
     $("#year").on("focus", function () {
@@ -53,7 +79,7 @@
     });
     $("#mes").on("change", function () {
         $("select[name=dia]").find("option").remove();
-        var option="<option value='' disabled selected>Día</option>";
+        var option = "<option value='' disabled selected>Día</option>";
         $("select[name=dia]").append(option);
     });
     $("#mes").on("focus", function () {
@@ -76,17 +102,17 @@
         if ((fecha <= date) & ($("select[name=ano]").val() != null)) {
             if (fecha.getFullYear() == date.getFullYear()) {
                 for (var i = 0; i <= date.getMonth(); i++) {
-                    var option="<option class='mes' value="+(i+1)+">"+meses[i]+"</option>";
+                    var option = "<option class='mes' value=" + (i + 1) + ">" + meses[i] + "</option>";
                     $("select[name=mes]").append(option);
                 }
             } else {
                 for (var i = 0; i < meses.length; i++) {
-                    var option="<option class='mes' value="+(i+1)+">"+meses[i]+"</option>";
+                    var option = "<option class='mes' value=" + (i + 1) + ">" + meses[i] + "</option>";
                     $("select[name=mes]").append(option);
                 }
             }
-        }else{
-            var option="<option value='' disabled selected>Mes</option>";
+        } else {
+            var option = "<option value='' disabled selected>Mes</option>";
             $("select[name=mes]").append(option);
         }
     });
@@ -97,10 +123,10 @@
             0
         );
         $("select[name=dia]").find("option").remove();
-        if ((fecha <= date || (fecha.getFullYear() == date.getFullYear() & fecha.getMonth()==date.getMonth())) & ($("select[name=ano]").val() != null) & ($("select[name=mes]").val() != null)) {
-            if(fecha.getFullYear() == date.getFullYear()){
-                var day=date.getDate();
-                if (fecha.getMonth()==date.getMonth()) {
+        if ((fecha <= date || (fecha.getFullYear() == date.getFullYear() & fecha.getMonth() == date.getMonth())) & ($("select[name=ano]").val() != null) & ($("select[name=mes]").val() != null)) {
+            if (fecha.getFullYear() == date.getFullYear()) {
+                var day = date.getDate();
+                if (fecha.getMonth() == date.getMonth()) {
                     for (var i = 1; i <= day; i++) {
                         $("select[name=dia]").append(new Option(i, i));
                     }
@@ -109,16 +135,17 @@
                         $("select[name=dia]").append(new Option(i, i));
                     }
                 }
-            }else {
+            } else {
                 for (var i = 1; i <= fecha.getDate(); i++) {
                     $("select[name=dia]").append(new Option(i, i));
                 }
             }
-        }else{
-            var option="<option value='' disabled selected>Día</option>";
+        } else {
+            var option = "<option value='' disabled selected>Día</option>";
             $("select[name=dia]").append(option);
         }
-        // $('#i-fNacimiento').val($("select[name=ano]").val()+"-"+$("select[name=mes]").val()+"-"+$("select[name=dia]").val());
+        
+
     });
     $("#dia").on("change", function (){
         $('#i-fNacimiento').val($("select[name=ano]").val() + "-" + $("select[name=mes]").val() + "-" + $("select[name=dia]").val());

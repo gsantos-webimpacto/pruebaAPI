@@ -18,7 +18,6 @@ class EditarCuentaController extends AbstractController
     */ 
     public function edit()
     {
-        //$mensaje = 'Hello World!';
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager()->getRepository(Pais::class);         
         $listadopaises=$em->findAll(); 
