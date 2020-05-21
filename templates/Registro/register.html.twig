@@ -110,37 +110,24 @@
                 </div>
                 <div class="form-group col-6">
                     <label class="l-input-text" for="i-apellidos">Fecha Nacimiento</label>
-                    {# <input type="date" name="fechaNacimiento" id="i-fNacimiento" class="form-control"
-                        required /> #}
                     <div class="row pl-3">
-                        <select id="year" class="fecha form-control col-3" name="ano" placeholder="Año"> <!-- Los años se cargan con javascript y jquery -->
+                        <select id="year" class="fecha form-control col-3" name="ano" required> <!-- Los años se cargan con javascript y jquery -->
+                            <option value="" disabled selected>Año</option>
                         </select>
-                        <select id="mes" class="fecha form-control col-5 mr-1 ml-1" name="mes" placeholder="Mes">
-                            {# <option value="1">Enero</option>
-                            <option value="2">Febrero</option>
-                            <option value="3">Marzo</option>
-                            <option value="4">Abril</option>
-                            <option value="5">Mayo</option>
-                            <option value="6">Junio</option>
-                            <option value="7">Julio</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Septiembre</option>
-                            <option value="10">Octubre</option>
-                            <option value="11">Noviembre</option>
-                            <option value="12">Diciembre</option> #}
+                        <select id="mes" class="fecha form-control col-5 mr-1 ml-1" name="mes" required>
+                            <option value="" disabled selected>Mes</option>
                         </select>
-                        <select id="dia" class="fecha form-control col-3 "  name="dia" placeholder="Día"> <!-- Los años se cargan con javascript y jquery -->
-                            {# <option value="1">1</option> #}
+                        <select  id="dia" class="fecha form-control col-3 "  name="dia" required> <!-- Los años se cargan con javascript y jquery -->
+                            <option value="" disabled selected>Día</option>
                         </select>
                     </div>
-                    
-                    {# <input type="button" name="boton" value="buscar el numero de dias"> #}
                 </div>
-                <div class="form-group col-6">
+                <input type="hidden" name="fechaNacimiento" id="i-fNacimiento" value="">
+                {# <div class="form-group col-6">
                     <label class="l-input-text" for="i-apellidos">Fecha Nacimiento</label>
                     <input type="date" name="fechaNacimiento" id="i-fNacimiento" class="form-control"
                         required />
-                </div>
+                </div> #}
                 <div class="form-group col-6">
                     <label class="l-input-text" for="i-email">Email</label>
                     <input type="email" name="email" class="form-control" id="i-email"  placeholder="EJ: tu@email.com" required required autofocus>

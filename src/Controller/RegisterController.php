@@ -50,6 +50,7 @@ class RegisterController extends AbstractController
         $user->setNombre($_REQUEST["nombre"]);
         $user->setApellidos($_REQUEST["apellidos"]);
         $user->setUsername($_REQUEST["email"]); 
+        // dump($_REQUEST["fechaNacimiento"]);
         $date = date_create_from_format('Y-m-d', $_REQUEST["fechaNacimiento"]);
         $user->setFechadenacimiento($date);
         $user->setSexo($_REQUEST["sexo"]);
