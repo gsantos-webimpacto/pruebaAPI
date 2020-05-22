@@ -26,10 +26,17 @@
 
             <div class="col-5 fila1-2">
                 <div class="row justify-content-end">
-                    <a href="/register" class"a-none">
-                        <label for="user-nuevo" class="mt-2"><u>Nueva Cuenta</u></label>
-                        <img id="user-nuevo" class="img-fluid fila-1-img" src="{{ asset('imagenes/ICONS/User-plus.svg') }}" alt="user" />
-                    </a>
+                    {% if app.user %}
+                        <a href="/mi-cuenta" class"a-none">
+                            <label for="user-nuevo" class="mt-2"><u>Mi cuenta</u></label>
+                            <img id="user-nuevo" class="img-fluid fila-1-img" src="{{ asset('imagenes/ICONS/User-plus.svg') }}" alt="user" />
+                        </a>
+                    {% else %}
+                        <a href="/register" class"a-none">
+                            <label for="user-nuevo" class="mt-2"><u>Nueva Cuenta</u></label>
+                            <img id="user-nuevo" class="img-fluid fila-1-img" src="{{ asset('imagenes/ICONS/User-plus.svg') }}" alt="user" />
+                        </a>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12 fila1-3 mt-5">
@@ -66,11 +73,11 @@
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
-                {% if app.user %}
+                {# {% if app.user %}
                     <div class="mb-3">
                         You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
                     </div>
-                {% endif %}
+                {% endif %} #}
                 <div class="form-group col-12">
                     <label class="l-input-text" for="inputEmail">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" class="form-control" id="inputEmail" required autofocus>
