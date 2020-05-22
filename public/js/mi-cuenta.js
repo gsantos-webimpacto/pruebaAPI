@@ -1,30 +1,17 @@
 (function () {
+    //funcion que muestra la fecha de nacimiento del usuario en los select
     function mostrarFechaNacimiento(){
         var $date=new Date($('#i-fNacimiento').val());
-        // $('').remove();
         var option = "<option value='"+$date.getFullYear()+"' selected>"+$date.getFullYear()+"</option>";
         $("select[name=ano]").append(option);
-        var meses = [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre",
-        ];
+        var meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",];
         var option = "<option value='"+$date.getMonth()+"' selected>"+meses[$date.getMonth()]+"</option>";
         $("select[name=mes]").append(option);
-        // $("select[name=dia]").find("option").remove();
         var option = "<option value='"+$date.getDate()+"' selected>"+$date.getDate()+"</option>";
         $("select[name=dia]").append(option);
     }
     mostrarFechaNacimiento();
+    //funcion que muestra la password si hay algo en ese input
     function mostrarPassword() {
         var cambio = document.getElementById("txtPassword");
         if (cambio.type == "password") {
@@ -35,6 +22,7 @@
             $("#img-password").attr("src", "../imagenes/ICONS/hide.svg");
         }
     }
+    //funcion que muestra la password si hay algo en ese input
     function mostrarPasswordRepetir() {
         var cambio = document.getElementById("txtRepetir");
         if (cambio.type == "password") {
@@ -51,17 +39,50 @@
     $("#img-repetir").click(function () {
         mostrarPasswordRepetir();
     });
-    // $('#txtRepetir').on("focus",function(){
-    //     if(validar($('#txtRepetir').text==false)){
-    //         $('#txtRepetir').setCustomValidity("La contraseña debe tener al menos 2 números, 1 mayúscula, 1 minúscula,  símbolo y 7 carácteres.");
-    //     }else if($('#txtRepetir').text==$('#txtPassword').text){
-    //         $('#txtRepetir').setCustomValidity("Las contraseña tiene que ser la misma");
-    //     }
-    // });
-    // function validar(string){
-    //     var patron=/(?=.*\d{2,})(?=.*[a-z]{2,})(?=.*[A-Z]{2,})(?=.*[_@#$]{1,}).{7,12}/g;
-    //     return string.match(patron);
-    // }
+    $('#txtPassword').on("focusout",function(){
+        validar();
+    });
+    $('#txtRepetir').on("focusout",function(){
+       validar();
+    });
+    //funcion que comprueba si hay contenido en los campos password y en ese caso que cumpla los requisitos de
+    //password
+   function validarCamposPassword(){
+       var valid=true;
+            console.log($('#txtPassword').val());
+            console.log($('#txtRepetir').val());
+            if($('#txtPassword').val()!=""){
+                if(validarPassword($('#txtPassword').val())==false){
+                    valid=false;
+                    $('#txtPassword').attr("class","form-control btn-danger");
+                }else
+                    $('#txtPassword').attr("class","form-control");
+     
+                if($('#txtRepetir').val() != $('#txtPassword').val()){
+                    valid=false;
+                    $('#txtRepetir').attr("class","form-control btn-danger");
+                }else
+                    $('#txtRepetir').attr("class","form-control");
+            }
+            console.log(valid);
+       return valid;
+   }
+   //comprueba que el formulario es valido, si no lo fuera no se envia
+   function validar(){
+       var valid =true;
+       if(validarCamposPassword()==false)
+           valid=false;    
+       return valid;
+   }    
+   $('form').on("submit",function(){
+       return validar();
+   });
+   //funcion que comprueba si la contraseña cumple la expresion regular
+   function validarPassword(s){
+       var patron=/(?=.*\d{1,})(?=.*[a-z]{1,})(?=.*[A-Z]{1,}).{7,12}/g;
+       return patron.test(s);
+   }
+   //Apartado en el que se comprueba que solo se puede meter una actual, no permite futura
     var date = new Date();
     var year = date.getFullYear();
     $("#year").on("change", function () {
@@ -85,19 +106,7 @@
     $("#mes").on("focus", function () {
         $("select[name=mes]").find("option").remove();
         var fecha = new Date($("select[name=ano]").val(), date.getMonth(), 0);
-        var meses = [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre",
+        var meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",
         ];
         if ((fecha <= date) & ($("select[name=ano]").val() != null)) {
             if (fecha.getFullYear() == date.getFullYear()) {
@@ -153,7 +162,7 @@
 
     });
 })();
-
+//Apartado de AJAX en que salen las provincias en funcion del pais seleccionado
 var pais = document.getElementById("i-pais");
 pais.addEventListener("change", function () {
     var idPais = pais.value;

@@ -7,7 +7,6 @@ body{
     border-radius: 5px;
     
 }
-
 @font-face {font-family: "NexaHeavy"; src: url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.eot"); src: url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.woff") format("woff"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/160f151bb5c24f63117344faa604d58b.svg#NexaW01-Heavy") format("svg"); }
 @font-face{
     font-family: Nexa-XBold;
@@ -169,4 +168,8 @@ line-height: 13px;
     letter-spacing: 0;
     text-align: center;
     line-height: 16px;
+}
+.alerta{
+    font-family: Lato-Regular;
+    color: red;
 }
