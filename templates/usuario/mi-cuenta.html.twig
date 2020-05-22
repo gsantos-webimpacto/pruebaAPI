@@ -57,10 +57,22 @@
                     </div>
                     <div class="form-group col mb-3 ml-3">
                         <label class="l-input-text" for="i-idioma">Idioma</label>                 
-                        <select id="i-idioma" class="form-control" name="idioma" required>
-                          {% for idioma in listadoidiomas %}    
-                                <option  value='{{idioma.ididioma}}' {% if app.user.idioma.ididioma==idioma.ididioma %}selected{% endif %}> {{ idioma.descripcion }} </option>               
+                        <select id="i-idioma" class="form-control" name="idioma" >
+                        {% if listadoidiomas != null %}
+                            {# {% if app.user.idioma==null %}
+                            <option class="o-provincia" value='' selected> Ninguno </option>               
+                            {% endif %} #}
+                            {% for idioma in listadoidiomas %}    
+                                <option  value='{{idioma.ididioma}}' {% if app.user.idioma!=null %} {% if app.user.idioma.ididioma==idioma.ididioma %}selected{% endif %}{% endif %}> {{ idioma.descripcion }} </option>               
                             {% endfor %}
+                        {% else %}
+                            {% if app.user.idioma==null %}
+                            <option class="o-provincia" value='' selected> Ninguno </option>               
+                            {% else %}
+                            <option  value='{{app.user.idioma.ididioma}}' selected>{{app.user.idioma.descripcion}}</option>               
+                            {% endif %}
+
+                        {% endif %}
                         </select>
                     </div> 
                 </div>
@@ -121,18 +133,40 @@
                 </div>
                 <div class="form-group col-6">
                         <label class="l-input-text" for="i-pais">País</label>                 
-                        <select id="i-pais" class="form-control" name="pais" required>
+                        <select id="i-pais" class="form-control" name="pais">
+                        {% if listadopaises != null %}
+                            {# {% if app.user.pais == null %}
+                            <option value='' selected> Ninguno </option>               
+                            {% endif %} #}
                             {% for pais in listadopaises %}    
-                            <option value='{{pais.idpais}}' {% if app.user.pais.idpais==pais.idpais %}selected{% endif %}> {{ pais.nombre }} </option>               
-                        {% endfor %}
+                            <option value='{{pais.idpais}}' {% if app.user.pais!=null %} {% if app.user.pais.idpais==pais.idpais %}selected{% endif %}{% endif %}> {{ pais.nombre }} </option>               
+                            {% endfor %}
+                        {% else %}
+                            {% if app.user.pais == null %}
+                            <option value='' selected> Ninguno </option>               
+                            {% else %}
+                            <option value='{{app.user.pais.idpais}}' selected>{{app.user.pais.nombre}}</option> 
+                            {% endif %}
+                        {% endif %}
                         </select>
                 </div>
                 <div class="form-group col-6">
                     <label class="l-input-text" for="i-provincia">Provincia</label>
-                    <select id="i-provincia" class="form-control" name="provincia" required>
-                        {% for provincia in listadoprovincias %}    
-                                <option class="o-provincia" value='{{provincia.idprovincia}}' {% if app.user.provincia.idprovincia==provincia.idprovincia %}selected{% endif %}> {{ provincia.nombre }} </option>               
+                    <select id="i-provincia" class="form-control" name="provincia">
+                        {% if listadoprovincia != null  %}
+                            {# {% if app.user.provincia == null %}
+                            <option class="o-provincia" value='' selected> Ninguno </option>               
+                            {% endif %} #}
+                            {% for provincia in listadoprovincia %}    
+                                <option class="o-provincia" value='{{provincia.idprovincia}}' {% if app.user.provincia!=null %}{% if app.user.provincia.idprovincia==provincia.idprovincia %}selected{% endif %}{% endif %}> {{ provincia.nombre }} </option>               
                             {% endfor %}
+                        {% else %}
+                            {% if app.user.provincia == null %}
+                            <option class="o-provincia" value='' selected> Ninguno </option>  7
+                            {% else %}             
+                            <option  class="o-provincia" value="{{app.user.pais.idprovincia}}" selected>{{app.user.nombre.nombre}}</option> 
+                            {% endif %}
+                        {% endif %}
                     </select>
                 </div>
                 <div class="form-group col-6">                   
@@ -145,7 +179,7 @@
                 </div>
                 <div class="form-group col-6">                   
                     <label class="l-input-text" for="i-codigoPostal">CódigoPostal</label>           
-                    <input class="form-control"  type="number" name="codigoPostal" id="i-codigoPostal" value='{{app.user.codigopostal}}'>
+                    <input class="form-control"  type="number" name="codigoPostal" id="i-codigoPostal" value='{{app.user.codigopostal}}' required>
                 </div>
                 </div>
             </div>

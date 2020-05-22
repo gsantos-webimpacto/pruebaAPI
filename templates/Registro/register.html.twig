@@ -90,14 +90,18 @@
                             required />
                         <label class="form-check-label l-radio-text" for="i-mujer">Mujer</label>
                     </div>
+                    {% if listadoidioma != null %}
                     <div class="form-group col mb-3 ml-3">
                         <label class="l-input-text" for="i-idioma">Idioma</label>                 
-                        <select id="i-idioma" class="form-control" name="idioma" required>
+                        <select id="i-idioma" class="form-control" name="idioma" >
                            {% for idioma in listadoidioma %}
                                 <option  value='{{idioma.ididioma}}' {% if idioma.ididioma==1 %}selected{% endif %}> {{ idioma.descripcion }} </option>
                             {% endfor %}
                         </select>
-                    </div> 
+                    </div>
+                    {% else %}
+                    <input type="hidden" name="idioma" id="i-idioma" value=""> 
+                    {% endif %}
                 </div>
                 <div class="row">
                 <div class="form-group col-6">                   
@@ -109,7 +113,7 @@
                     <input type="text" name="apellidos" class="form-control" id="i-apellidos" required>
                 </div>
                 <div class="form-group col-6">
-                    <label class="l-input-text" for="i-apellidos">Fecha Nacimiento</label>
+                    <label class="l-input-text">Fecha Nacimiento</label>
                     <div class="row pl-3">
                         <select id="year" class="fecha form-control col-3" name="ano" required> <!-- Los años se cargan con javascript y jquery -->
                             <option value="" disabled selected>Año</option>
@@ -125,7 +129,7 @@
                 <input type="hidden" name="fechaNacimiento" id="i-fNacimiento" value="">
                 <div class="form-group col-6">
                     <label class="l-input-text" for="i-email">Email</label>
-                    <input type="email" name="email" class="form-control" id="i-email"  placeholder="EJ: tu@email.com" required required autofocus>
+                    <input type="email" name="email" class="form-control" id="i-email"  placeholder="EJ: tu@email.com" required >
                 </div>
                 <div class="form-group col-6">
                     <label class="l-input-text" for="inputPassword">Contraseña</label>
@@ -156,22 +160,30 @@
                     <label class="l-input-text" for="i-telefono">Teléfono</label> 
                     <input type="text" class="form-control"  name="telefono" id="i-telefono" required>
                 </div>
+                {% if listadopaises != null %}
                 <div class="form-group col-6">
                         <label class="l-input-text" for="i-pais">País</label>                 
-                        <select id="i-pais" class="form-control" name="pais" required>
+                        <select id="i-pais" class="form-control" name="pais" >
                             {% for pais in listadopaises %}
                             <option  value='{{pais.idpais}}' {% if pais.idpais==1 %}selected{% endif %}> {{ pais.nombre }} </option>
                             {% endfor %}
                         </select>
                 </div>
+                {% else %}
+                <input type="hidden" name="pais" id="i-pais" value="">
+                {% endif %}
+                {% if listadoprovincia != null %}
                 <div class="form-group col-6">
                     <label class="l-input-text" for="i-provincia">Provincia</label>
-                    <select id="i-provincia" class="form-control" name="provincia" required>
+                    <select id="i-provincia" class="form-control" name="provincia">
                         {% for provincia in listadoprovincia %}
                             <option class="o-provincia" value='{{provincia.idprovincia}}' {% if provincia.idprovincia==1 %}selected{% endif %}> {{ provincia.nombre }} </option>
                         {% endfor %} 
                     </select>
                 </div>
+                {% else %}
+                <input type="hidden" name="provincia" id="i-provincia" value="">
+                {% endif %}
                 <div class="form-group col-6">                   
                     <label class="l-input-text" for="i-ciudad">Ciudad</label>             
                     <input type="text" class="form-control" name="ciudad" id="i-ciudad">
@@ -182,7 +194,7 @@
                 </div>
                 <div class="form-group col-6">                   
                     <label class="l-input-text" for="i-codigoPostal">CódigoPostal</label>           
-                    <input class="form-control"  type="number" name="codigoPostal" id="i-codigoPostal">
+                    <input class="form-control" value="0"  type="number" name="codigoPostal" id="i-codigoPostal" required>
                 </div>
                 <div class="form-check col-6 mt-3">
                     <label class="custom-radio-checkbox">

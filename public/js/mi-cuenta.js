@@ -179,29 +179,35 @@ pais.addEventListener("change", function () {
         dataType: "json",
         async: true,
         success: function (data, status) {
-            var e = $(
-                '<option class="o-provincia" id="op-' +
-                0 +
-                '" value=' +
-                data[0]["idprovincia"] +
-                " selected>" +
-                data[0]["nombre"] +
-                "</option>"
-            );
-            $("#i-provincia").prepend(e);
-            for (i = 1; i < data.length; i++) {
-                student = data[i];
+            if(data.length==0){
+                var e=$("<option  class='o-provincia' value='' selected>Ninguno</option> ");
+                $("#i-provincia").prepend(e);
+            }else{
                 var e = $(
                     '<option class="o-provincia" id="op-' +
-                    i +
+                    0 +
                     '" value=' +
-                    student["idprovincia"] +
-                    ">" +
-                    student["nombre"] +
+                    data[0]["idprovincia"] +
+                    " selected>" +
+                    data[0]["nombre"] +
                     "</option>"
                 );
                 $("#i-provincia").prepend(e);
+                for (i = 1; i < data.length; i++) {
+                    student = data[i];
+                    var e = $(
+                        '<option class="o-provincia" id="op-' +
+                        i +
+                        '" value=' +
+                        student["idprovincia"] +
+                        ">" +
+                        student["nombre"] +
+                        "</option>"
+                    );
+                    $("#i-provincia").prepend(e);
+                }
             }
+            
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Ajax failed.");

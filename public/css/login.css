@@ -5,7 +5,7 @@ body{
     background-color: #FA2398;
 }
 .container-fluid{
-    max-width: 700px;
+    max-width: 409px;
     background-color: white;
     border-radius: 5px;
 }
@@ -74,7 +74,7 @@ hr{
 #img-password{
     position: absolute;
     margin-left: -13%;
-    margin-top: 3%;
+    margin-top: 2%;
     z-index: 2;
     height: 65%;
     opacity: 0.3;
