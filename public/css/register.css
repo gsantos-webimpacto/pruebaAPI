@@ -1,5 +1,33 @@
 body{
+    /* background-color: #FA2398; */
+    background-color: none;
+
+}
+@media (min-width: 700px) {
+    body{
     background-color: #FA2398;
+    }
+    #img-password, #img-repetir{
+        position: absolute;
+        margin-left: -13%;
+        margin-top: 2%;
+        z-index: 2;
+        height: 65%;
+        opacity: 0.3;
+    }
+}
+@media (max-width: 700px) {
+    /* body{
+    background-color: #FA2398;
+    } */
+    #img-password, #img-repetir{
+        position: absolute;
+        margin-left: -15%;
+        margin-top: 4%;
+        z-index: 2;
+        height: 65%;
+        opacity: 0.3;
+    }
 }
 .container-fluid{
     max-width: 700px;
@@ -48,6 +76,7 @@ body{
     /* padding-right: 4px; */
     margin-left: 0%;
 }
+
 span{
     font-family: Lato-Regular;
     font-size: 14px;
@@ -74,14 +103,14 @@ hr{
 #txtPassword, #txtRepetir{
     z-index: 1;
 }
-#img-password, #img-repetir{
+/* #img-password, #img-repetir{
     position: absolute;
-    margin-left: -13%;
-    margin-top: 3%;
+    margin-left: -15%;
+    margin-top: 4%;
     z-index: 2;
     height: 65%;
     opacity: 0.3;
-}
+} */
 .enlace{
     font-family: Lato-Regular;
     font-size: 14px;
@@ -91,10 +120,19 @@ hr{
     line-height: 20px;
     
 }
-.btn-pink{
-    background-color: #FA2398;
-    color: white;
+.div-submit{
     width: 100%;
+    background-color: #FA2398;
+    text-align: center;
+
+}
+.btn-pink{
+    font-family: Nexa-XBold;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    /* line-height: 42px; */
+    /* color: white; */
 }
 .l-check{
     font-family: Lato-Regular;
@@ -104,11 +142,22 @@ hr{
     line-height: 20px;
 }
 .l-input-text{
+    /* font-family: Lato-Regular;
+    font-size: 13px;
+    color: #3B3B3B;
+    letter-spacing: 0;
+    line-height: 30px; */
     font-family: Lato-Regular;
-font-size: 13px;
-color: #3B3B3B;
-letter-spacing: 0;
-line-height: 13px;
+    font-size: 14px;
+    color: #3B3B3B;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+.l-check-conf{
+    text-align: left;
+}
+span .l-check-conf{
+    text-align: left;
 }
 /* Centra el input personalizado con el texto */
 .custom-radio-checkbox {
