@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * User
+ * @ApiResource
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D649E7927C74", columns={"email"})}, indexes={@ORM\Index(name="fk_user_pais", columns={"pais"}), @ORM\Index(name="fk_user_provincia", columns={"provincia"}), @ORM\Index(name="fk_user_idioma", columns={"idioma"})})
  * @ORM\Entity
  */
@@ -29,7 +31,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @var json
+     * @var array
      *
      * @ORM\Column(name="roles", type="json", nullable=false)
      */
