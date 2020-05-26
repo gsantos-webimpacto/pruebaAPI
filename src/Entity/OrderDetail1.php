@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-
 /**
  * OrderDetail1
  * @ApiResource
@@ -37,16 +36,6 @@ class OrderDetail1
     private $price;
 
     /**
-     * @var \Order
-     *
-     * @ORM\ManyToOne(targetEntity="Order")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="order", referencedColumnName="id")
-     * })
-     */
-    private $order;
-
-    /**
      * @var \Producto
      *
      * @ORM\ManyToOne(targetEntity="Producto")
@@ -55,6 +44,16 @@ class OrderDetail1
      * })
      */
     private $product;
+
+    /**
+     * @var \Order
+     *
+     * @ORM\ManyToOne(targetEntity="Order")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="order", referencedColumnName="id")
+     * })
+     */
+    private $order;
 
     public function getId(): ?int
     {
@@ -85,18 +84,6 @@ class OrderDetail1
         return $this;
     }
 
-    public function getOrder(): ?Order
-    {
-        return $this->order;
-    }
-
-    public function setOrder(?Order $order): self
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
     public function getProduct(): ?Producto
     {
         return $this->product;
@@ -105,6 +92,18 @@ class OrderDetail1
     public function setProduct(?Producto $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getOrder(): ?Order
+    {
+        return $this->order;
+    }
+
+    public function setOrder(?Order $order): self
+    {
+        $this->order = $order;
 
         return $this;
     }
