@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 /**
- * Order
+ * Orders
  * @ApiResource
- * @ORM\Table(name="order", uniqueConstraints={@ORM\UniqueConstraint(name="tracking_number", columns={"tracking_number"})}, indexes={@ORM\Index(name="user", columns={"user"})})
+ * @ORM\Table(name="orders", indexes={@ORM\Index(name="user", columns={"user"})})
  * @ORM\Entity
  */
-class Order
+class Orders
 {
     /**
      * @var int
