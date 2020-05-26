@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+
 /**
  * Producto
+ * @ApiResource
  * @ORM\Table(name="producto")
  * @ORM\Entity
  */
@@ -49,7 +51,7 @@ class Producto
     private $precio;
 
     /**
-     * @var json
+     * @var array
      *
      * @ORM\Column(name="tags", type="json", nullable=false)
      */
