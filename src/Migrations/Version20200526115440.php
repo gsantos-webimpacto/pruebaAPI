@@ -21,13 +21,6 @@ final class Version20200526115440 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-<<<<<<< HEAD:src/Migrations/Version20200526092004.php
-        $this->addSql('CREATE TABLE `order` (id INT AUTO_INCREMENT NOT NULL, user INT DEFAULT NULL, price DOUBLE PRECISION NOT NULL, mailing_address VARCHAR(180) NOT NULL, billing_address VARCHAR(180) NOT NULL, paid TINYINT(1) NOT NULL, purchase_date DATE NOT NULL, shipping_date DATE NOT NULL, sent TINYINT(1) NOT NULL, tracking_number VARCHAR(50) DEFAULT NULL, INDEX user (user), UNIQUE INDEX tracking_number (tracking_number), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE order_detail1 (id INT AUTO_INCREMENT NOT NULL, product INT DEFAULT NULL, `order` INT DEFAULT NULL, quantity INT NOT NULL, price INT NOT NULL, INDEX product (product), INDEX IDX_1C8E827DF5299398 (`order`), UNIQUE INDEX `order` (`order`, product), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE `order` ADD CONSTRAINT FK_F52993988D93D649 FOREIGN KEY (user) REFERENCES user (id)');
-        $this->addSql('ALTER TABLE order_detail1 ADD CONSTRAINT FK_1C8E827DD34A04AD FOREIGN KEY (product) REFERENCES producto (id)');
-        $this->addSql('ALTER TABLE order_detail1 ADD CONSTRAINT FK_1C8E827DF5299398 FOREIGN KEY (`order`) REFERENCES `order` (id)');
-=======
 
         $this->addSql('CREATE TABLE idioma (ididioma INT AUTO_INCREMENT NOT NULL, descripcion VARCHAR(100) NOT NULL, PRIMARY KEY(ididioma)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE orders (id INT AUTO_INCREMENT NOT NULL, user INT DEFAULT NULL, price DOUBLE PRECISION NOT NULL, mailing_address VARCHAR(180) NOT NULL, billing_address VARCHAR(180) NOT NULL, paid TINYINT(1) NOT NULL, purchase_date DATE NOT NULL, shipping_date DATE NOT NULL, sent TINYINT(1) NOT NULL, tracking_number VARCHAR(50) DEFAULT NULL, INDEX user (user), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -43,7 +36,6 @@ final class Version20200526115440 extends AbstractMigration
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D6491DC85E0C FOREIGN KEY (idioma) REFERENCES idioma (ididioma)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D6497E5D2EFF FOREIGN KEY (pais) REFERENCES pais (idpais)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649D39AF213 FOREIGN KEY (provincia) REFERENCES provincia (idprovincia)');
->>>>>>> devel:src/Migrations/Version20200526115440.php
     }
 
     public function down(Schema $schema) : void
