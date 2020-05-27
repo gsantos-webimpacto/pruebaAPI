@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 /**
- * OrderDetail1
+ * OrdersDetail
  * @ApiResource
- * @ORM\Table(name="order_detail1", uniqueConstraints={@ORM\UniqueConstraint(name="order", columns={"order", "product"})}, indexes={@ORM\Index(name="product", columns={"product"}), @ORM\Index(name="IDX_1C8E827DF5299398", columns={"order"})})
+ * @ORM\Table(name="orders_detail", uniqueConstraints={@ORM\UniqueConstraint(name="order", columns={"order", "product"})}, indexes={@ORM\Index(name="product", columns={"product"}), @ORM\Index(name="IDX_8F964642F5299398", columns={"order"})})
  * @ORM\Entity
  */
-class OrderDetail1
+class OrdersDetail
 {
     /**
      * @var int
@@ -46,9 +46,9 @@ class OrderDetail1
     private $product;
 
     /**
-     * @var \Order
+     * @var \Orders
      *
-     * @ORM\ManyToOne(targetEntity="Order")
+     * @ORM\ManyToOne(targetEntity="Orders")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="order", referencedColumnName="id")
      * })
@@ -96,12 +96,12 @@ class OrderDetail1
         return $this;
     }
 
-    public function getOrder(): ?Order
+    public function getOrder(): ?Orders
     {
         return $this->order;
     }
 
-    public function setOrder(?Order $order): self
+    public function setOrder(?Orders $order): self
     {
         $this->order = $order;
 

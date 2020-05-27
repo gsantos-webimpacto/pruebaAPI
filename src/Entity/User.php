@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 /**
  * User
  * @ApiResource
@@ -136,13 +138,38 @@ class User implements UserInterface
      * })
      */
     private $provincia;
+    // @Groups("user:write")
+    /**
+     * 
+     * @SerializedName("password")
+     */
+    private $plainPassword;
 
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        $this->plainPassword = null;
+    }
+    
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
     }
 
-/**
+    /**
      * A visual identifier that represents this user.
      *
      * @see UserInterface
@@ -209,14 +236,6 @@ class User implements UserInterface
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
     public function getNombre(): ?string
     {
         return $this->nombre;
