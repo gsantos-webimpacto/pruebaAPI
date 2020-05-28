@@ -33,26 +33,38 @@
     $('#txtRepetir').on("focusout",function(){
         validar();
    });
+    //funcion que comprueba si la contraseña cumple la expresion regular
+    function validarPassword(s){
+        var patron=/(?=.*\d{1,})(?=.*[a-z]{1,})(?=.*[A-Z]{1,}).{7,12}/g;
+        return patron.test(s);
+    }
+    //comprueba que el formulario es valido, si no lo fuera no se envia
+    function validar(){
+        var valid =true;
+        if(validarCamposPassword()==false)
+            valid=false;    
+        if( $('#check-confirmacion').is(":not(:checked)"))
+            $('#error-confirmacion').text("Obligatorio");
+        return valid;
+    }
     //funcion que comprueba si hay contenido en los campos password y en ese caso que cumpla los requisitos de
     //password
     function validarCamposPassword(){
         var valid=true;
-            console.log($('#txtPassword').val());
-            console.log($('#txtRepetir').val());
+        console.log($('#txtPassword').val());
+        console.log($('#txtRepetir').val());
 
-            if(validarPassword($('#txtPassword').val())==false){
-                valid=false;
-                $('#txtPassword').attr("class","form-control btn-danger");
-            }else
-                $('#txtPassword').attr("class","form-control");
-
-            if($('#txtRepetir').val() != $('#txtPassword').val()){
-                valid=false;
-                $('#txtRepetir').attr("class","form-control btn-danger");
-            }else
-                $('#txtRepetir').attr("class","form-control");
-        
-                console.log(valid);
+        if(validarPassword($('#txtPassword').val())==false){
+            valid=false;
+            $('#txtPassword').attr("class","form-control btn-danger");
+        }else
+            $('#txtPassword').attr("class","form-control");
+        if($('#txtRepetir').val() != $('#txtPassword').val()){
+            valid=false;
+            $('#txtRepetir').attr("class","form-control btn-danger");
+        }else
+            $('#txtRepetir').attr("class","form-control");
+            // console.log(valid);
         return valid;
     }
     $('input[type="checkbox"]').click(function(){
@@ -61,24 +73,123 @@
         else
             $('#error-confirmacion').text("");
     });
-   //comprueba que el formulario es valido, si no lo fuera no se envia
-    function validar(){
-        var valid =true;
-        if(validarCamposPassword()==false)
-            valid=false;    
-        if( $('#check-confirmacion').is(":not(:checked)"))
-            $('#error-confirmacion').text("Obligatorio");
-        return valid;
-    }    
+
+    //funcion que inserta usuario medinate AJAX y API
+    function registerAjaxApi(){
+        if(validar()){
+            $valid = false;
+            var user={
+                "password": $('#txtPassword').val(),
+                "username": "",
+                "roles": [
+                    "ROLE_USER"
+                ],
+                "nombre": $('#i-nombre').val(),
+                "apellidos": $('#i-apellidos').val(),
+                "fechadenacimiento": $('#i-fNacimiento').val(),
+                "sexo": $('input:radio[name=sexo]:checked').val(),
+                "telefono": $('#i-telefono').val(),
+                "datosadicionales": $('#datosAdicionales').val(),
+                "ciudad": $('#i-ciudad').val(),
+                "direccion": $('#i-direccion').val(),
+                "codigopostal": Number($('#i-codigoPostal').val()),
+                "idioma": "/api/idiomas/"+$('#i-idioma').val(),
+                "pais": "/api/pais/"+$('#i-pais').val(),
+                "provincia": "/api/provincias/"+$('#i-provincia').val(),
+                "email": $('#i-email').val()
+            };
+            var request=$.ajax({
+                url: "/api/users",
+                type: "post",
+                contentType:"application/json; charset=utf-8",
+                data:JSON.stringify(user),
+                success: function(response)
+                {
+                    // alert("realizado");
+                    // console.log("Archivo enviado");
+                    $valid= true;
+                },
+                error: function(response)
+                {
+                    //  console.log("Archivo NO enviado");
+                    //  alert(response.status);
+                    $valid= false;
+                },
+                complete : function(xhr, status) {
+                    return $valid;
+                }
+            });
+            // request.always(function(){
+            //     // alert('alw');
+                
+            // });
+            // // console.log();
+            //  alert($valid);
+        }else{
+            return false;
+        }
+        // return $valid;
+    };
+    //Llamamos para que realice la insercion y comprobamos que la ha realizado   
     $('form').on("submit",function(){
-        return validar();
+        var realizado= registerAjaxApi();
+        // $valid = false;
+        // if(validar()){
+        //     var user={
+        //         "password": $('#txtPassword').val(),
+        //         "username": "",
+        //         "roles": [
+        //             "ROLE_USER"
+        //         ],
+        //         "nombre": $('#i-nombre').val(),
+        //         "apellidos": $('#i-apellidos').val(),
+        //         "fechadenacimiento": $('#i-fNacimiento').val(),
+        //         "sexo": $('input:radio[name=sexo]:checked').val(),
+        //         "telefono": $('#i-telefono').val(),
+        //         "datosadicionales": $('#datosAdicionales').val(),
+        //         "ciudad": $('#i-ciudad').val(),
+        //         "direccion": $('#i-direccion').val(),
+        //         "codigopostal": Number($('#i-codigoPostal').val()),
+        //         "idioma": "/api/idiomas/"+$('#i-idioma').val(),
+        //         "pais": "/api/pais/"+$('#i-pais').val(),
+        //         "provincia": "/api/provincias/"+$('#i-provincia').val(),
+        //         "email": $('#i-email').val()
+        //     };
+        //     $.ajax({
+        //         url: "/api/users",
+        //         type: "post",
+        //         contentType:"application/json; charset=utf-8",
+        //         data:JSON.stringify(user),
+        //         success: function(response)
+        //         {
+        //             // alert("realizado");
+        //             // console.log("Archivo enviado");
+        //             $valid= true;
+        //         },
+        //         error: function(response)
+        //         {
+        //             //  console.log("Archivo NO enviado");
+        //             //  alert(response.status);
+        //             $valid= false;
+        //         },
+        //         complete : function(xhr, status) {
+        //             return $valid;
+        //         }
+        //     });
+        //     // request.always(function(){
+        //     //     // alert('alw');
+                
+        //     // });
+        //     // // console.log();
+        //     //  alert($valid);
+        // }else{
+        //     return false;
+        // }
+        // alert('submit'+realizado);
+        return  realizado;
         // return false;
     });
-   //funcion que comprueba si la contraseña cumple la expresion regular
-    function validarPassword(s){
-        var patron=/(?=.*\d{1,})(?=.*[a-z]{1,})(?=.*[A-Z]{1,}).{7,12}/g;
-        return patron.test(s);
-    }
+
    //Apartado en el que se comprueba que solo se puede meter una actual, no permite futura
     var date = new Date();
     var year = date.getFullYear();
@@ -156,6 +267,7 @@
 
     });
 })();
+
 //Apartado de AJAX en que salen las provincias en funcion del pais seleccionado
 var pais = document.getElementById("i-pais");
 pais.addEventListener("change", function () {
@@ -176,7 +288,7 @@ pais.addEventListener("change", function () {
             var e = $(
                 '<option class="o-provincia" id="op-' +
                 0 +
-                '" value=' +
+                '" value=/api/provincias/' +
                 data[0]["idprovincia"] +
                 " selected>" +
                 data[0]["nombre"] +
@@ -188,7 +300,7 @@ pais.addEventListener("change", function () {
                 var e = $(
                     '<option class="o-provincia" id="op-' +
                     i +
-                    '" value=' +
+                    '" value=/api/provincias/' +
                     student["idprovincia"] +
                     ">" +
                     student["nombre"] +
@@ -202,3 +314,4 @@ pais.addEventListener("change", function () {
         },
     });
 });
+    
