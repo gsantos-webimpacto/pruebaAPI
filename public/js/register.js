@@ -75,9 +75,10 @@
     });
 
     //funcion que inserta usuario medinate AJAX y API
-    function registerAjaxApi(){
+    //Llamamos para que realice la insercion y comprobamos que la ha realizado   
+    $('form').on("submit",function(e){
+        $valid = false;
         if(validar()){
-            $valid = false;
             var user={
                 "password": $('#txtPassword').val(),
                 "username": "",
@@ -103,91 +104,30 @@
                 type: "post",
                 contentType:"application/json; charset=utf-8",
                 data:JSON.stringify(user),
+                async: false,
                 success: function(response)
                 {
                     // alert("realizado");
                     // console.log("Archivo enviado");
                     $valid= true;
                 },
-                error: function(response)
-                {
+                error: function(response){
+                    e.preventDefault();
                     //  console.log("Archivo NO enviado");
                     //  alert(response.status);
                     $valid= false;
+                    $('#error-email').text("Email asociado a una cuenta ya existente");
+                    // alert("Email asociado a una cuenta ya existente");
                 },
-                complete : function(xhr, status) {
-                    return $valid;
-                }
             });
-            // request.always(function(){
-            //     // alert('alw');
-                
-            // });
-            // // console.log();
+            request.then(function(){
+                // alert('alw');
+                return $valid;
+            });
             //  alert($valid);
         }else{
             return false;
         }
-        // return $valid;
-    };
-    //Llamamos para que realice la insercion y comprobamos que la ha realizado   
-    $('form').on("submit",function(){
-        var realizado= registerAjaxApi();
-        // $valid = false;
-        // if(validar()){
-        //     var user={
-        //         "password": $('#txtPassword').val(),
-        //         "username": "",
-        //         "roles": [
-        //             "ROLE_USER"
-        //         ],
-        //         "nombre": $('#i-nombre').val(),
-        //         "apellidos": $('#i-apellidos').val(),
-        //         "fechadenacimiento": $('#i-fNacimiento').val(),
-        //         "sexo": $('input:radio[name=sexo]:checked').val(),
-        //         "telefono": $('#i-telefono').val(),
-        //         "datosadicionales": $('#datosAdicionales').val(),
-        //         "ciudad": $('#i-ciudad').val(),
-        //         "direccion": $('#i-direccion').val(),
-        //         "codigopostal": Number($('#i-codigoPostal').val()),
-        //         "idioma": "/api/idiomas/"+$('#i-idioma').val(),
-        //         "pais": "/api/pais/"+$('#i-pais').val(),
-        //         "provincia": "/api/provincias/"+$('#i-provincia').val(),
-        //         "email": $('#i-email').val()
-        //     };
-        //     $.ajax({
-        //         url: "/api/users",
-        //         type: "post",
-        //         contentType:"application/json; charset=utf-8",
-        //         data:JSON.stringify(user),
-        //         success: function(response)
-        //         {
-        //             // alert("realizado");
-        //             // console.log("Archivo enviado");
-        //             $valid= true;
-        //         },
-        //         error: function(response)
-        //         {
-        //             //  console.log("Archivo NO enviado");
-        //             //  alert(response.status);
-        //             $valid= false;
-        //         },
-        //         complete : function(xhr, status) {
-        //             return $valid;
-        //         }
-        //     });
-        //     // request.always(function(){
-        //     //     // alert('alw');
-                
-        //     // });
-        //     // // console.log();
-        //     //  alert($valid);
-        // }else{
-        //     return false;
-        // }
-        // alert('submit'+realizado);
-        return  realizado;
-        // return false;
     });
 
    //Apartado en el que se comprueba que solo se puede meter una actual, no permite futura
