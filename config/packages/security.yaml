@@ -1,34 +1,36 @@
-# config/packages/security.yaml
 security:
-    # ...
-    access_control:
-        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # ...
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            anonymous: lazy
-            guard:
-                authenticators:
-                    - App\Security\LoginFormAuthenticator
-            logout:
-                path: app_logout
-                target: app_login
-                # where to redirect after logout
-                # target: app_any_route
     encoders:
-        # use your user class name here
         App\Entity\User:
-            # Use native password encoder
-            # This value auto-selects the best possible hashing algorithm
-            # (i.e. Sodium when available).
-            algorithm: auto
+            algorithm: sha512
 
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        api_user_provider:
             entity:
                 class: App\Entity\User
-                property: email
+                property: username
+
+    firewalls:
+        login:
+            pattern:  ^/api/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path:               /api/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+        api:
+            pattern:   ^/api/v1
+            stateless: true
+            anonymous: false
+            provider: api_user_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+    access_control:
+        - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1,       roles: IS_AUTHENTICATED_FULLY }
