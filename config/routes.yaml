@@ -12,3 +12,7 @@ app_edit_cuenta:
 app_Provincia_findProvinciasByPais:
     path: /ProvinciasController/findProvinciasByPais
     controller: App\Controller\ProvinciasController::findProvinciasByPais
+
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']

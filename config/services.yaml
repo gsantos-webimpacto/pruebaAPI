@@ -28,3 +28,13 @@ services:
     App\DataPersister\UserDataPersister: ~
         # Uncomment only if autoconfiguration is disabled
         tags: [ 'api_platform.data_persister' ]
+
+    App\Swagger\SwaggerDecorator:
+        decorates: 'api_platform.swagger.normalizer.documentation'
+        arguments: [ '@App\Swagger\SwaggerDecorator.inner' ]
+        autoconfigure: false
+
+    App\Doctrine\CurrentUserExtension:
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection }
+            - { name: api_platform.doctrine.orm.query_extension.item }
