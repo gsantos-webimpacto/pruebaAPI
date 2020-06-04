@@ -10,7 +10,17 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 /**
  * User
- * @ApiResource
+ * @ApiResource(
+ *     attributes={"security"="is_granted('ROLE_USER')"},
+ *     collectionOperations={
+ *         "get",
+ *         "post"={"security"="is_granted('ROLE_ADMIN')"}
+ *     },
+ *     itemOperations={
+ *         "get"={"security"="(is_granted('ROLE_ADMIN') and object.getPais() == user.getPais()) or ( is_granted('ROLE_USER') and object.getUsername() == user.getUsername()) or (is_granted('ROLE_SUPERADMIN'))", "security_message"="No eres el usuario o no es de tu país"},
+ *         "put"={"security"="(is_granted('ROLE_ADMIN') and object.getPais() == user.getPais()) or ( is_granted('ROLE_USER') and object.getUsername() == user.getUsername()) or (is_granted('ROLE_SUPERADMIN'))", "security_message"="No eres el usuario o no es de tu país"},
+ *     }
+ * )
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D649E7927C74", columns={"email"})}, indexes={@ORM\Index(name="fk_user_pais", columns={"pais"}), @ORM\Index(name="fk_user_provincia", columns={"provincia"}), @ORM\Index(name="fk_user_idioma", columns={"idioma"})})
  * @ORM\Entity
  */

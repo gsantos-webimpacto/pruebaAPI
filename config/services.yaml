@@ -33,3 +33,8 @@ services:
         decorates: 'api_platform.swagger.normalizer.documentation'
         arguments: [ '@App\Swagger\SwaggerDecorator.inner' ]
         autoconfigure: false
+
+    App\Doctrine\CurrentUserExtension:
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection }
+            - { name: api_platform.doctrine.orm.query_extension.item }
